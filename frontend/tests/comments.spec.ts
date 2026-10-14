@@ -1,0 +1,40 @@
+import {test,expect} from '@playwright/test'
+
+test('interview shortcuts select the chat workflow',async({page})=>{
+  await page.addInitScript(()=>localStorage.setItem('page','about'))
+  await page.goto('/')
+  await expect(page.getByRole('heading',{name:'今天想学什么？'})).toBeVisible()
+  const labels=await page.getByRole('navigation').getByRole('button').allTextContents()
+  expect(labels).toEqual(['学习助手'])
+  await expect(page.getByRole('navigation').getByRole('button',{name:'面试训练'})).toHaveCount(0)
+  await expect(page.getByRole('navigation').getByRole('button',{name:'项目说明'})).toHaveCount(0)
+  await expect(page.getByText('Enter 发送 · Shift + Enter 换行')).toHaveCount(0)
+  await expect(page.locator('.workflow-hint')).toHaveCount(0)
+  const tag=page.getByRole('group',{name:'选择回答工作流'}).getByRole('button',{name:'面试题训练',exact:true})
+  await expect(tag).toHaveAttribute('aria-pressed','false')
+  await tag.click()
+  await expect(tag).toHaveAttribute('aria-pressed','true')
+  await tag.click()
+  await expect(tag).toHaveAttribute('aria-pressed','false')
+})
+
+test('complete simulated cases and genuine feedback remain clearly separate',async({page})=>{
+  await page.goto('/')
+  await page.getByRole('button',{name:'设置',exact:true}).click()
+  await page.getByRole('navigation').getByRole('button',{name:'反馈与 Badcase',exact:true}).click()
+  await expect(page.locator('.example-row')).toHaveCount(6)
+  await expect(page.locator('.casebook-note')).toContainText('模拟场景')
+  for(const title of ['用户场景与问题','错误表现（模拟）','问题定位','修复方案','修复后的预期行为','复测方案与验收标准']){
+    await expect(page.locator('.case-detail').getByRole('heading',{name:title,exact:true})).toBeVisible()
+  }
+  await page.getByRole('button',{name:/EX-06/}).click()
+  await expect(page.locator('.case-detail h2')).toContainText('转写口径错误')
+  await page.getByText('关联课程依据 · 2',{exact:true}).click()
+  await page.locator('.case-detail .source-item').first().click()
+  await expect(page.locator('dialog[open] .source-body')).not.toBeEmpty()
+  await page.getByRole('button',{name:'关闭课程原文'}).click()
+  await page.screenshot({path:'../data/qa-complete-badcase.png',fullPage:true})
+  await page.getByRole('button',{name:'实际反馈',exact:true}).click()
+  await expect(page.locator('.casebook')).toHaveCount(0)
+  await expect(page.locator('.feedback-records')).toBeVisible()
+})

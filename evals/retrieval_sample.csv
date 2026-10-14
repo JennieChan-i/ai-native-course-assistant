@@ -1,0 +1,15 @@
+question_id,test_question,expected_doc_id,expected_topic,source_chunk_id
+DEMO_Q01,AI产品经理要如何判断项目目标？,01,岗位认知,SAMPLE_AIPM_001
+DEMO_Q02,为什么大模型需要外部知识？,02,大模型原理,SAMPLE_LLM_001
+DEMO_Q03,RAG的三阶段分别是什么？,03,RAG基础,SAMPLE_RAG_001
+DEMO_Q04,RAG与微调的区别是什么？,03,RAG基础,SAMPLE_RAG_002
+DEMO_Q05,如何分层评估RAG检索和回答？,03,RAG评测,SAMPLE_RAG_003
+DEMO_Q06,课程问答为什么需要记录来源？,04,RAG应用,SAMPLE_APPLY_001
+DEMO_Q07,Agent Router怎样选择Skill？,05,Agent设计,SAMPLE_AGENT_001
+DEMO_Q08,什么条件说明AI项目可以落地？,06,落地判断,SAMPLE_INDUSTRY_001
+DEMO_Q09,AI图像报告为什么要说明不确定性？,07,多模态案例,SAMPLE_SKIN_001
+DEMO_Q10,智能客服怎样处理订单状态和知识问题？,08,客服场景,SAMPLE_SUPPORT_001
+DEMO_Q11,AI功能PRD应包含哪些验收标准？,09,产品方法,SAMPLE_METHOD_001
+DEMO_Q12,文本审核怎样平衡误杀和漏放？,10,内容审核,SAMPLE_AUDIT_001
+DEMO_Q13,MCP工具接入要考虑什么权限？,12,MCP应用,SAMPLE_MCP_001
+DEMO_Q14,没有用户数据怎么写项目简历？,14,求职表达,SAMPLE_QA_001

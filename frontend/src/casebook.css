@@ -1,0 +1,28 @@
+.casebook-note{margin:0 0 20px}
+.casebook-layout{display:grid;grid-template-columns:minmax(240px,300px) minmax(0,1fr);gap:32px;align-items:start}
+.casebook-layout>aside{display:flex;flex-direction:column;gap:4px}
+.example-row{text-align:left;background:transparent;border:0;border-radius:8px;padding:16px;width:100%}
+.example-row:hover,.example-row.selected{background:var(--side)}
+.example-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.7rem;color:var(--muted)}
+.example-row h3{font-size:.88rem;margin:10px 0 6px;font-weight:600}
+.example-row p{font-size:.78rem;color:var(--muted);margin:0;line-height:1.7}
+.case-detail{min-width:0;padding:0 0 24px;font-size:.875rem;overflow-wrap:anywhere}
+.case-detail header{padding:0 0 20px;border-bottom:1px solid var(--line)}
+.case-detail header small{color:var(--muted)}
+.case-detail h2{margin:8px 0 0}
+.case-detail section{margin:26px 0}
+.case-detail h3{font-size:.95rem;margin-bottom:14px}
+.case-detail h4{margin:16px 0 6px;font-weight:500;color:var(--muted)}
+.case-detail p,.case-detail li{line-height:1.9}
+.case-detail li{margin-bottom:8px}
+.case-detail blockquote,.example-answer{margin:12px 0;padding:14px 16px;background:var(--side);border-radius:8px}
+.case-detail dl{display:grid;grid-template-columns:110px minmax(0,1fr);gap:8px;margin:16px 0;font-size:.8rem}
+.case-detail dt{color:var(--muted)}
+.case-detail dd{margin:0}
+.case-detail details{padding:16px 0;border-top:1px solid var(--line)}
+.regression-item{padding:12px 0;border-bottom:1px solid var(--line);font-size:.8rem}
+.regression-item b{font-weight:500}
+.regression-item p{color:var(--muted);margin:6px 0 0}
+.composer>div:has(>.send){justify-content:flex-end}
+@media(max-height:760px) and (min-width:651px){.welcome{margin-top:24px}.suggestions{margin-top:16px}.suggestions button{padding:10px 12px}}
+@media(max-width:850px){.casebook-layout{grid-template-columns:1fr}.casebook-layout>aside{flex-direction:row;overflow-x:auto;padding-bottom:8px}.example-row{flex:none;width:260px}.case-detail{padding-top:12px}}
